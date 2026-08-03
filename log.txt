@@ -1,0 +1,268 @@
+[2026-08-03 18:10:26.21] 开始抓取壁�?.. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:10:28 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:10:28) Requesting Bing API...
+-> (18:10:29) API response received successfully
+-> (18:10:29) Added 8 new records, total count: 2009
+-> (18:10:29) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:10:29.47] 今天没有新的壁纸更新�?
+[2026-08-03 18:10:38.69] 开始抓取壁�?.. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:10:40 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:10:40) Requesting Bing API...
+-> (18:10:40) API response received successfully
+-> (18:10:41) Added 8 new records, total count: 2009
+-> (18:10:41) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:10:41.26] 今天没有新的壁纸更新�?
+[2026-08-03 18:11:33.01] 开始抓取壁�?.. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:11:34 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:11:34) Requesting Bing API...
+-> (18:11:35) API response received successfully
+-> (18:11:35) Added 8 new records, total count: 2009
+-> (18:11:35) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:11:35.53] 今天没有新的壁纸更新�?
+[2026-08-03 18:12:39.11] 开始抓取壁�?.. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:12:40 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:12:40) Requesting Bing API...
+-> (18:12:41) API response received successfully
+-> (18:12:41) Added 8 new records, total count: 2009
+-> (18:12:41) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:12:41.60] 今天没有新的壁纸更新�?
+[2026-08-03 18:13:33.56] 开始抓取壁�?.. 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:13:35 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:13:35) Requesting Bing API...
+-> (18:13:35) API response received successfully
+-> (18:13:35) Added 8 new records, total count: 2009
+-> (18:13:35) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:13:36.10] 今天没有新的壁纸更新�?
+[2026-08-03 18:14:37.34] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:14:39 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:14:39) Requesting Bing API...
+-> (18:14:40) API response received successfully
+-> (18:14:40) Added 8 new records, total count: 2009
+-> (18:14:40) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:14:40.43] 今天没有新的壁纸更新。 
+[2026-08-03 18:17:11.46] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:17:13 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:17:13) Requesting Bing API...
+-> (18:17:13) API response received successfully
+-> (18:17:13) Added 8 new records, total count: 2009
+-> (18:17:13) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:17:14.07] 今天没有新的壁纸更新。 
+[2026-08-03 18:21:51.21] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:21:52 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:21:52) Requesting Bing API...
+-> (18:21:53) API response received successfully
+-> (18:21:53) Added 8 new records, total count: 2009
+-> (18:21:53) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:21:53.69] 检测到新壁纸，正在提交... 
+fatal: pathspec 'data\wallpapers.json' did not match any files
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source_list.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	log.txt
+	run_and_commit.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+To https://github.com/chnbsdan/bw.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/chnbsdan/bw.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-08-03 18:21:53.69] 提交完成！ 
+[2026-08-03 18:23:05.57] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:23:07 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:23:07) Requesting Bing API...
+-> (18:23:07) API response received successfully
+-> (18:23:07) Added 8 new records, total count: 2009
+-> (18:23:07) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:23:08.07] 检测到新壁纸，正在提交... 
+fatal: pathspec 'data\wallpapers.json' did not match any files
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source_list.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	log.txt
+	run_and_commit.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+To https://github.com/chnbsdan/bw.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/chnbsdan/bw.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-08-03 18:23:08.07] 提交完成！ 
+[2026-08-03 18:25:08.82] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:25:10 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:25:10) Requesting Bing API...
+-> (18:25:11) API response received successfully
+-> (18:25:11) Added 8 new records, total count: 2009
+-> (18:25:11) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:25:11.86] 检测到新壁纸，正在提交... 
+fatal: pathspec 'data\wallpapers.json' did not match any files
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source_list.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	log.txt
+	run_and_commit.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+To https://github.com/chnbsdan/bw.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/chnbsdan/bw.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-08-03 18:25:11.86] 提交完成！ 
+[2026-08-03 18:44:01.01] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 18:44:03 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (18:44:03) Requesting Bing API...
+-> (18:44:04) API response received successfully
+-> (18:44:04) Added 8 new records, total count: 2009
+-> (18:44:04) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 18:44:04.60] 检测到新壁纸，正在提交... 
+fatal: pathspec 'data\wallpapers.json' did not match any files
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source_list.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	log.txt
+	run_and_commit.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+[2026-08-03 18:44:04.60] 提交完成！ 
+[2026-08-03 19:34:39.56] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 19:34:42 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (19:34:42) Requesting Bing API...
+-> (19:34:42) API response received successfully
+-> (19:34:42) Added 8 new records, total count: 2009
+-> (19:34:42) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 19:34:43.25] 检测到新壁纸，正在提交... 
+fatal: pathspec 'data\wallpapers.json' did not match any files
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source_list.csv
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	log.txt
+	run_and_commit.bat
+
+no changes added to commit (use "git add" and/or "git commit -a")
+To https://github.com/chnbsdan/bw.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/chnbsdan/bw.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-08-03 19:34:43.25] 提交完成！ 
+[2026-08-03 19:38:17.60] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Mon Aug  3 19:38:19 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (19:38:19) Requesting Bing API...
+-> (19:38:19) API response received successfully
+-> (19:38:19) Added 8 new records, total count: 2009
+-> (19:38:19) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-03 19:38:20.18] 检测到新壁纸，正在提交... 
+[main 03e562d] Daily Update: source_list.csv 2026/08/03
+ 2 files changed, 18084 insertions(+), 1 deletion(-)
+ create mode 100644 data/wallpapers.json
+To https://github.com/chnbsdan/bw.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/chnbsdan/bw.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[2026-08-03 19:38:20.19] 提交完成！ 
