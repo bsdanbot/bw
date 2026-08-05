@@ -306,3 +306,26 @@ Traceback (most recent call last):
     ~~~~~^^^^^^^^^^^^^^^^^^^^^^
 UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
 [2026-08-04 11:44:50.06] ℹ️ 今天没有新的壁纸更新。 
+[2026-08-05  9:08:01.46] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Wed Aug  5 09:08:08 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (09:08:08) Requesting Bing API...
+-> (09:08:08) API response received successfully
+-> (09:08:08) Added 7 new records, total count: 2011
+-> (09:08:08) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+Traceback (most recent call last):
+  File "D:\bw\generate_data.py", line 9, in <module>
+    print(f"\U0001f4d6 ��ȡ�� {len(df)} ����¼")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\U0001f4d6' in position 0: illegal multibyte sequence
+[2026-08-05  9:08:10.72] 检测到新壁纸，正在提交... 
+[main ee22b12] Daily Update: 2026/08/05
+ 1 file changed, 1 insertion(+)
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/chnbsdan/bw.git
+   0c86bf8..ee22b12  main -> main
+[2026-08-05  9:08:10.72] ✅ 提交完成！ 
