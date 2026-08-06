@@ -329,3 +329,17 @@ error: Please commit or stash them.
 To https://github.com/chnbsdan/bw.git
    0c86bf8..ee22b12  main -> main
 [2026-08-05  9:08:10.72] ✅ 提交完成！ 
+[2026-08-06  8:30:02.78] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Thu Aug  6 08:30:16 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (08:30:16) Requesting Bing API...
+-> (08:30:17) API response received successfully
+-> (08:30:17) Added 7 new records, total count: 2012
+-> (08:30:17) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-06  8:30:18.29] 生成 JSON 数据... 
+📖 读取到 2012 条记录
+✅ 已生成 data/wallpapers.json，共 2012 条记录
+📋 字段: ['date', 'copyright', 'description', 'jpg', 'webp', 'thumb']
