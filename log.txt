@@ -343,3 +343,26 @@ To https://github.com/chnbsdan/bw.git
 📖 读取到 2012 条记录
 ✅ 已生成 data/wallpapers.json，共 2012 条记录
 📋 字段: ['date', 'copyright', 'description', 'jpg', 'webp', 'thumb']
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+[2026-08-06  8:30:24.07] 检测到新壁纸，正在提交... 
+[main 41f2890] Daily Update: 2026/08/06
+ 4 files changed, 32 insertions(+), 4 deletions(-)
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/chnbsdan/bw.git
+   0fc1a8a..41f2890  main -> main
+[2026-08-06  8:30:24.07] ✅ 提交完成！ 
+[2026-08-07  8:00:11.29] 开始抓取壁纸... 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	 Fri Aug  7 08:00:18 2026
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-> (08:00:18) Requesting Bing API...
+-> (08:00:19) API response received successfully
+-> (08:00:19) Added 7 new records, total count: 2013
+-> (08:00:19) Cache files cleaned
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+[2026-08-07  8:00:19.75] 生成 JSON 数据... 
+📖 读取到 2013 条记录
+✅ 已生成 data/wallpapers.json，共 2013 条记录
+📋 字段: ['date', 'copyright', 'description', 'jpg', 'webp', 'thumb']
