@@ -457,3 +457,12 @@ fatal: unable to access 'https://github.com/chnbsdan/bw.git/': Recv failure: Con
 📖 读取到 2016 条记录
 ✅ 已生成 data/wallpapers.json，共 2016 条记录
 📋 字段: ['date', 'copyright', 'description', 'jpg', 'webp', 'thumb']
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+[2026-08-10  8:40:07.12] 检测到新壁纸，正在提交... 
+[main 0b1d5d2] Daily Update: 2026/08/10
+ 1 file changed, 22 insertions(+)
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To https://github.com/chnbsdan/bw.git
+   d1566ea..0b1d5d2  main -> main
+[2026-08-10  8:40:07.12] ✅ 提交完成！ 

@@ -21,7 +21,7 @@ git add . >> log.txt 2>&1
 git diff --cached --quiet
 if errorlevel 1 (
     echo [%date% %time%] 检测到新壁纸，正在提交... >> log.txt
-    git commit -m "Daily Update: %date:~0,4%/%date:~5,2%/%date:~8,2%" >> log.txt 2>&1
+    git commit -m "chnbsdan_bot: %date:~0,4%/%date:~5,2%/%date:~8,2%" >> log.txt 2>&1
     git pull origin main --rebase >> log.txt 2>&1
     git push origin main >> log.txt 2>&1
     echo [%date% %time%] ✅ 提交完成！ >> log.txt
