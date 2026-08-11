@@ -1,0 +1,37 @@
+name: 自动运行
+
+on:
+  schedule:
+    - cron: '0 20 * * *'   # 每天 04:00 北京时间
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # ★★★ 如果是 Fork 的仓库，用默认 token 即可 ★★★
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 安装依赖
+        run: |
+          pip install requests pandas
+      
+      - name: 运行脚本
+        run: |
+          python main.py --no-html --no-image
+      
+      - name: 提交变更
+        run: |
+          git config --global user.name 'bsdanbot'
+          git config --global user.email 'bsdanbot@noreply.github.com'
+          git add .
+          git diff --staged --quiet || git commit -m "auto update $(date +'%Y-%m-%d')"
+          git push
