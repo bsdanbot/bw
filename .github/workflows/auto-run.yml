@@ -1,37 +1,52 @@
-name: 自动运行
+name: 自动抓取必应壁纸
 
 on:
   schedule:
     - cron: '0 20 * * *'   # 每天 04:00 北京时间
-  workflow_dispatch:
+  workflow_dispatch:        # 允许手动触发
 
 jobs:
-  run:
+  fetch-wallpaper:
     runs-on: ubuntu-latest
     
     steps:
+      # ★★★ 检出机器人账号的 Fork ★★★
       - uses: actions/checkout@v4
         with:
-          # ★★★ 如果是 Fork 的仓库，用默认 token 即可 ★★★
           token: ${{ secrets.GITHUB_TOKEN }}
       
+      # ★★★ 设置 Python ★★★
       - name: 设置 Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       
+      # ★★★ 安装依赖 ★★★
       - name: 安装依赖
         run: |
           pip install requests pandas
       
-      - name: 运行脚本
+      # ★★★ 运行抓取脚本（跳过图片下载，加快速度） ★★★
+      - name: 抓取壁纸数据
         run: |
           python main.py --no-html --no-image
       
+      # ★★★ 提交变更到 Fork ★★★
       - name: 提交变更
         run: |
           git config --global user.name 'bsdanbot'
-          git config --global user.email 'bsdanbot@noreply.github.com'
-          git add .
+          git config --global user.email 'bsdanbot@users.noreply.github.com'
+          git add source_list.csv data/wallpapers.json
           git diff --staged --quiet || git commit -m "auto update $(date +'%Y-%m-%d')"
           git push
+      
+      # ★★★ 创建 PR 到主仓库 ★★★
+      - name: 创建 Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "auto update"
+          title: "自动更新壁纸数据"
+          body: "由机器人 bsdanbot 自动生成的更新"
+          base: main
+          branch: bot-update
