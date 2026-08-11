@@ -5,6 +5,9 @@ on:
     - cron: '0 20 * * *'   # 每天 04:00 北京时间
   workflow_dispatch:        # 允许手动触发
 
+permissions:
+  contents: write
+
 jobs:
   fetch-wallpaper:
     runs-on: ubuntu-latest
