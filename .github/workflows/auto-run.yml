@@ -26,11 +26,11 @@ jobs:
       - name: 安装依赖
         run: pip install requests pandas
       
+      # ★★★ 改成 --update ★★★
       - name: 抓取壁纸数据
         run: |
-          python main.py --no-html --no-image
+          python main.py --update
       
-      # ★★★ 修改：用 git status 检查变更 ★★★
       - name: 检查变更
         id: check_changes
         run: |
