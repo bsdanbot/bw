@@ -30,20 +30,19 @@ jobs:
         run: |
           python main.py --no-html --no-image
       
-      # ★★★ 检查是否有变更 ★★★
+      # ★★★ 修改：用 git status 检查变更 ★★★
       - name: 检查变更
         id: check_changes
         run: |
           git add source_list.csv data/wallpapers.json
-          if git diff --staged --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "没有新的壁纸数据"
-          else
+          if git status --porcelain | grep -q "^"; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "有新数据，准备提交"
+            echo "✅ 有新数据，准备提交"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "⏸️ 没有新的壁纸数据"
           fi
       
-      # ★★★ 只有有变更时才提交 ★★★
       - name: 提交变更
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
@@ -52,7 +51,6 @@ jobs:
           git commit -m "auto update $(date +'%Y-%m-%d')"
           git push
       
-      # ★★★ 只有有变更时才创建 PR ★★★
       - name: 创建 Pull Request
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v6
