@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout bsdanbot/bw
+      - name: Checkout bsdanbot/bw (workflow branch)
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.MAIN_PAT }}
@@ -39,6 +39,12 @@ jobs:
           git config --local user.name "bsdanbot"
           git config --local user.email "bsdanbot@users.noreply.github.com"
 
+          # ★★★ 切换回 main 分支（不含 .github）★★★
+          git checkout main
+
+          # ★★★ 从 workflow 分支复制数据文件 ★★★
+          git checkout workflow -- source_list.csv data/wallpapers.json
+
           # ★★★ 只添加数据文件 ★★★
           git add source_list.csv data/wallpapers.json
 
@@ -51,6 +57,6 @@ jobs:
 
           # ★★★ 推送到主仓库 ★★★
           echo "🚀 推送到主仓库 chnbsdan/bw..."
-          git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git HEAD:main
+          git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git main
 
           echo "✅ 推送完成！"
