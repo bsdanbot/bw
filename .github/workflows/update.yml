@@ -31,10 +31,10 @@ jobs:
 
       - name: Clear cache and fetch wallpapers
         run: |
-          # ★★★ 强制删除缓存 ★★★
+          # ★★★ 删除缓存目录 ★★★
           rm -rf cache/
-          # 强制重新抓取，不使用任何缓存
-          python main.py --no-html --no-image --no-cache
+          # ★★★ 不加 --no-cache，直接运行 ★★★
+          python main.py --no-html --no-image
 
       - name: Generate JSON
         run: |
@@ -61,7 +61,7 @@ jobs:
           # 提交
           git commit -m "Daily wallpaper update [skip ci]"
 
-          # ★★★ 先克隆主仓库，然后只替换数据文件 ★★★
+          # ★★★ 用克隆方式推送，避免 .github ★★★
           git clone https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git ../main-repo
           cp source_list.csv ../main-repo/
           cp data/wallpapers.json ../main-repo/data/
