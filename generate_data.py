@@ -32,7 +32,7 @@ def get_file_hash(filepath):
         return hashlib.md5(f.read()).hexdigest()
 
 def fetch_history_data():
-    """从在线接口获取历史数据"""
+    """从在线接口获取历史数据（已经是目标格式）"""
     url = 'https://bw-2f9.pages.dev/data/data.json'
     try:
         print(f"📥 正在从 {url} 获取历史数据...")
@@ -50,46 +50,6 @@ def fetch_history_data():
     except Exception as e:
         print(f"⚠️ 获取历史数据出错: {e}")
         return []
-
-def convert_history_item(item):
-    """
-    将历史数据转换为目标格式
-    支持两种格式：
-    1. 必应API格式：有 urlbase 字段，以 /th?id= 开头
-    2. 历史数据格式：有 isHistory 字段，urlbase 是完整链接
-    """
-    # 格式化日期
-    startdate = item.get('startdate', '')
-    if len(startdate) == 8:
-        date = f"{startdate[:4]}-{startdate[4:6]}-{startdate[6:8]}"
-    else:
-        date = startdate
-    
-    urlbase = item.get('urlbase', '')
-    
-    # 判断格式
-    if urlbase and urlbase.startswith('/th?id='):
-        # 必应API格式
-        id_part = urlbase.replace('/th?id=', '')
-        base_url = f"https://cn.bing.com/th?id={id_part}"
-        return {
-            'date': date,
-            'copyright': item.get('title', item.get('copyright', '')),
-            'description': item.get('copyright', ''),
-            'jpg': f"{base_url}_UHD.jpg",
-            'webp': f"{base_url}_UHD.jpg",
-            'thumb': f"{base_url}_400x240.jpg"
-        }
-    else:
-        # 历史格式（已有完整URL）
-        return {
-            'date': date,
-            'copyright': item.get('title', ''),
-            'description': item.get('copyright', ''),
-            'jpg': urlbase,
-            'webp': urlbase,
-            'thumb': item.get('thumb', urlbase)
-        }
 
 def transform_record(row):
     """
@@ -112,10 +72,10 @@ def transform_record(row):
     
     return {
         'date': row['date'],
-        'copyright': row['title'],  # 对应原有的 title 字段
+        'copyright': row['title'],
         'description': row['description'],
         'jpg': f"{base}_UHD.jpg",
-        'webp': f"{base}_UHD.jpg",  # 如果 webp 不同，可单独处理
+        'webp': f"{base}_UHD.jpg",
         'thumb': f"{base}_400x240.jpg"
     }
 
@@ -158,20 +118,18 @@ def main():
         lambda x: f"{x[:4]}-{x[4:6]}-{x[6:8]}" if len(x) == 8 else x
     )
     
-    # 5. 获取并转换历史数据
+    # 5. 获取历史数据（已经是目标格式，直接使用）
     history_data = fetch_history_data()
     history_records = []
     if history_data:
-        print("🔄 正在转换历史数据...")
-        for item in history_data:
-            try:
-                converted = convert_history_item(item)
-                if converted.get('date'):
-                    history_records.append(converted)
-            except Exception as e:
-                print(f"⚠️ 转换单条历史数据失败: {e}")
-                continue
-        print(f"📖 历史数据转换后 {len(history_records)} 条记录")
+        print(f"✅ 历史数据已经是目标格式，无需转换")
+        history_records = history_data
+        print(f"📖 历史数据共 {len(history_records)} 条记录")
+        # 显示历史数据的时间范围
+        if history_records:
+            dates = [r.get('date', '') for r in history_records if r.get('date')]
+            if dates:
+                print(f"   - 历史数据范围: {min(dates)} ~ {max(dates)}")
     else:
         print("ℹ️ 没有获取到历史数据")
     
@@ -192,7 +150,7 @@ def main():
     df_combined = df_combined.drop_duplicates(subset=['date'], keep='first')
     print(f"📊 合并后总记录数: {len(df_combined)}")
     
-    # 8. 转换数据（使用 transform_record）
+    # 8. 转换数据（来自 CSV 的部分需要转换）
     print("🔄 正在转换数据...")
     records = df_combined.apply(transform_record, axis=1).tolist()
     
