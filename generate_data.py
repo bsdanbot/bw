@@ -58,6 +58,31 @@ def transform_record(row):
     """
     base_url = row['url']
     
+    # ★★★ 处理空值 ★★★
+    if pd.isna(base_url) or not isinstance(base_url, str):
+        # 如果是空值，尝试从其他字段构建 URL
+        date_str = row.get('date', '')
+        if date_str:
+            # 用日期构建一个占位 URL，或者跳过这条记录
+            return {
+                'date': row['date'],
+                'copyright': row.get('title', ''),
+                'description': row.get('description', ''),
+                'jpg': '',
+                'webp': '',
+                'thumb': ''
+            }
+        else:
+            # 如果连日期都没有，直接返回空
+            return {
+                'date': '',
+                'copyright': '',
+                'description': '',
+                'jpg': '',
+                'webp': '',
+                'thumb': ''
+            }
+    
     # 去除 _UHD 或 _1920x1080 等后缀，保留基础部分
     base = base_url.replace('_UHD.jpg', '').replace('_1920x1080.jpg', '')
     
@@ -150,17 +175,22 @@ def main():
     df_combined = df_combined.drop_duplicates(subset=['date'], keep='first')
     print(f"📊 合并后总记录数: {len(df_combined)}")
     
-    # 8. 转换数据（来自 CSV 的部分需要转换）
+    # ★★★ 8. 过滤掉 url 为空的行 ★★★
+    df_combined = df_combined[df_combined['url'].notna()]
+    df_combined = df_combined[df_combined['url'].astype(str).str.len() > 0]
+    print(f"📊 过滤掉 url 为空的行后: {len(df_combined)} 条记录")
+    
+    # 9. 转换数据（来自 CSV 的部分需要转换）
     print("🔄 正在转换数据...")
     records = df_combined.apply(transform_record, axis=1).tolist()
     
-    # 9. 按日期排序（最新的在前）
+    # 10. 按日期排序（最新的在前）
     records = sorted(records, key=lambda x: x['date'], reverse=True)
     
-    # 10. 确保 data 目录存在
+    # 11. 确保 data 目录存在
     ensure_directory('data')
     
-    # 11. 生成 JSON
+    # 12. 生成 JSON
     json_path = 'data/wallpapers.json'
     old_hash = get_file_hash(json_path)
     
@@ -172,7 +202,7 @@ def main():
         print(f"❌ 保存 JSON 失败: {e}")
         sys.exit(1)
     
-    # 12. 验证生成的 JSON
+    # 13. 验证生成的 JSON
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
             saved_data = json.load(f)
@@ -183,7 +213,7 @@ def main():
     except Exception as e:
         print(f"⚠️ 验证 JSON 失败: {e}")
     
-    # 13. 显示数据概览
+    # 14. 显示数据概览
     if records:
         latest = records[0]
         oldest = records[-1]
@@ -202,7 +232,7 @@ def main():
             print(f"   - 标题: {copyright_text}")
         print(f"   - 图片: {latest['jpg'][:60]}...")
     
-    # 14. 检查是否有变化
+    # 15. 检查是否有变化
     new_hash = get_file_hash(json_path)
     if old_hash != new_hash:
         print(f"\n🔄 JSON 文件已更新")
