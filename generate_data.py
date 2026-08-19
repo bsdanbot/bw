@@ -53,46 +53,41 @@ def fetch_history_data():
 
 def transform_record(row):
     """
-    转换单条记录（来自 CSV）
-    将 CSV 中的字段映射为 JSON 格式
+    转换单条记录
+    如果数据来自历史数据（已有完整字段），直接返回
+    如果数据来自 CSV，进行转换
     """
+    # ★★★ 如果已经有完整的 jpg 字段（来自历史数据），直接返回 ★★★
+    if 'jpg' in row and row.get('jpg') and isinstance(row['jpg'], str) and row['jpg'].startswith('http'):
+        return {
+            'date': row['date'],
+            'copyright': row.get('copyright', row.get('title', '')),
+            'description': row.get('description', ''),
+            'jpg': row['jpg'],
+            'webp': row.get('webp', row['jpg']),
+            'thumb': row.get('thumb', row['jpg'])
+        }
+    
+    # ★★★ CSV 数据的处理逻辑 ★★★
     base_url = row['url']
     
-    # ★★★ 处理空值 ★★★
     if pd.isna(base_url) or not isinstance(base_url, str):
-        # 如果是空值，尝试从其他字段构建 URL
-        date_str = row.get('date', '')
-        if date_str:
-            # 用日期构建一个占位 URL，或者跳过这条记录
-            return {
-                'date': row['date'],
-                'copyright': row.get('title', ''),
-                'description': row.get('description', ''),
-                'jpg': '',
-                'webp': '',
-                'thumb': ''
-            }
-        else:
-            # 如果连日期都没有，直接返回空
-            return {
-                'date': '',
-                'copyright': '',
-                'description': '',
-                'jpg': '',
-                'webp': '',
-                'thumb': ''
-            }
+        return {
+            'date': row['date'],
+            'copyright': row.get('title', ''),
+            'description': row.get('description', ''),
+            'jpg': '',
+            'webp': '',
+            'thumb': ''
+        }
     
-    # 去除 _UHD 或 _1920x1080 等后缀，保留基础部分
     base = base_url.replace('_UHD.jpg', '').replace('_1920x1080.jpg', '')
     
-    # 处理可能存在的其他后缀
     if '_UHD' in base_url:
         base = base_url.replace('_UHD.jpg', '')
     elif '_1920x1080' in base_url:
         base = base_url.replace('_1920x1080.jpg', '')
     else:
-        # 如果没有后缀，移除 .jpg 后缀
         base = base_url.replace('.jpg', '')
     
     return {
@@ -175,12 +170,19 @@ def main():
     df_combined = df_combined.drop_duplicates(subset=['date'], keep='first')
     print(f"📊 合并后总记录数: {len(df_combined)}")
     
-    # ★★★ 8. 过滤掉 url 为空的行 ★★★
-    df_combined = df_combined[df_combined['url'].notna()]
-    df_combined = df_combined[df_combined['url'].astype(str).str.len() > 0]
-    print(f"📊 过滤掉 url 为空的行后: {len(df_combined)} 条记录")
+    # ★★★ 8. 过滤掉 jpg 为空的行（而不是 url） ★★★
+    # 检查是否有 jpg 字段，如果没有则用 url 字段
+    if 'jpg' in df_combined.columns:
+        df_combined = df_combined[df_combined['jpg'].notna()]
+        df_combined = df_combined[df_combined['jpg'].astype(str).str.len() > 0]
+        print(f"📊 过滤掉 jpg 为空的行后: {len(df_combined)} 条记录")
+    else:
+        # 如果没有 jpg 字段，用 url 字段过滤
+        df_combined = df_combined[df_combined['url'].notna()]
+        df_combined = df_combined[df_combined['url'].astype(str).str.len() > 0]
+        print(f"📊 过滤掉 url 为空的行后: {len(df_combined)} 条记录")
     
-    # 9. 转换数据（来自 CSV 的部分需要转换）
+    # 9. 转换数据
     print("🔄 正在转换数据...")
     records = df_combined.apply(transform_record, axis=1).tolist()
     
