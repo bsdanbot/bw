@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.MAIN_PAT }}
+          ref: workflow
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -33,38 +34,22 @@ jobs:
           python main.py --no-html --no-image
           python generate_data.py
 
-      - name: Push ONLY data files to main repo
+      - name: Push data files only
         run: |
           git config --local user.name "bsdanbot"
           git config --local user.email "bsdanbot@users.noreply.github.com"
 
-          # 1. 先从主仓库拉取最新的数据文件
-          echo "🔄 拉取主仓库最新数据..."
-          git fetch https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git main
-          git checkout FETCH_HEAD -- source_list.csv data/wallpapers.json 2>/dev/null || true
-
-          # 2. 重新运行抓取
-          echo "📥 重新抓取壁纸..."
-          python main.py --no-html --no-image
-          python generate_data.py
-
-          # 3. 只暂存数据文件
+          # ★★★ 只添加数据文件 ★★★
           git add source_list.csv data/wallpapers.json
 
-          # 4. 检查是否有变化
           if git diff --staged --quiet; then
-            echo "⏸️ 数据无变化，跳过推送"
+            echo "⏸️ 没有新的壁纸数据，跳过提交"
             exit 0
           fi
 
-          # 5. 提交数据文件
           git commit -m "Daily wallpaper update [skip ci]"
 
-          # 6. ★★★ 彻底删除 .github 跟踪 ★★★
-          git rm -r --cached .github/ 2>/dev/null || true
-          git rm -r .github/ 2>/dev/null || true
-
-          # 7. 推送到主仓库
+          # ★★★ 推送到主仓库 ★★★
           echo "🚀 推送到主仓库 chnbsdan/bw..."
           git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git HEAD:main
 
