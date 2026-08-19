@@ -14,7 +14,7 @@ subpages_dir = "./wallpaper/subpages"
 cache_dir = "./cache"
 backup_dir = "./backup"
 # re_url = "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=10"
-re_url = "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=10&nc=1614319565639&pid=hp&FORM=BEHPTB&uhd=1"
+re_url = "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=10&mkt=zh-CN&nc=1614319565639&pid=hp&FORM=BEHPTB&uhd=1"
 url_base = "https://cn.bing.com"
 img_prefix = "BW"
 MSG_LEN = 50
