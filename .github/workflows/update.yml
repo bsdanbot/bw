@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout bsdanbot/bw (workflow branch)
+      - name: Checkout bsdanbot/bw
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.MAIN_PAT }}
@@ -29,34 +29,47 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests pandas
 
-      - name: Fetch and generate data
+      - name: Clear cache and fetch wallpapers
         run: |
-          python main.py --no-html --no-image
+          # ★★★ 强制删除缓存 ★★★
+          rm -rf cache/
+          # 强制重新抓取，不使用任何缓存
+          python main.py --no-html --no-image --no-cache
+
+      - name: Generate JSON
+        run: |
           python generate_data.py
 
-      - name: Push data files only
+      - name: Check if data changed
+        id: check
+        run: |
+          if git diff --quiet source_list.csv; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push data files
+        if: steps.check.outputs.changed == 'true'
         run: |
           git config --local user.name "bsdanbot"
           git config --local user.email "bsdanbot@users.noreply.github.com"
 
-          # ★★★ 切换回 main 分支（不含 .github）★★★
-          git checkout main
-
-          # ★★★ 从 workflow 分支复制数据文件 ★★★
-          git checkout workflow -- source_list.csv data/wallpapers.json
-
-          # ★★★ 只添加数据文件 ★★★
+          # 只添加数据文件
           git add source_list.csv data/wallpapers.json
 
-          if git diff --staged --quiet; then
-            echo "⏸️ 没有新的壁纸数据，跳过提交"
-            exit 0
-          fi
-
+          # 提交
           git commit -m "Daily wallpaper update [skip ci]"
 
-          # ★★★ 推送到主仓库 ★★★
-          echo "🚀 推送到主仓库 chnbsdan/bw..."
-          git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git main
+          # ★★★ 先克隆主仓库，然后只替换数据文件 ★★★
+          git clone https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git ../main-repo
+          cp source_list.csv ../main-repo/
+          cp data/wallpapers.json ../main-repo/data/
+          cd ../main-repo
+          git config --local user.name "bsdanbot"
+          git config --local user.email "bsdanbot@users.noreply.github.com"
+          git add source_list.csv data/wallpapers.json
+          git commit -m "Daily wallpaper update [skip ci]" || echo "No changes"
+          git push origin main
 
           echo "✅ 推送完成！"
