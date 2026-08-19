@@ -65,8 +65,8 @@ jobs:
 
           git commit -m "Merge data updates from main repo [skip ci]"
 
-          # 强制推送到主仓库
+          # 推送到主仓库
           echo "🚀 推送到主仓库 chnbsdan/bw..."
-          git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git main
+          git push --force https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git HEAD:main
 
           echo "✅ 已成功推送到主仓库 chnbsdan/bw"
