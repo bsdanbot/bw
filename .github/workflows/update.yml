@@ -59,7 +59,7 @@ jobs:
           git add source_list.csv data/wallpapers.json
 
           # 提交
-          git commit -m "Daily wallpaper update [skip ci]"
+          git commit -m "Daily wallpaper update"
 
           # ★★★ 用克隆方式推送，避免 .github ★★★
           git clone https://chnbsdan:${{ secrets.MAIN_PAT }}@github.com/chnbsdan/bw.git ../main-repo
@@ -69,7 +69,7 @@ jobs:
           git config --local user.name "bsdanbot"
           git config --local user.email "bsdanbot@users.noreply.github.com"
           git add source_list.csv data/wallpapers.json
-          git commit -m "Daily wallpaper update [skip ci]" || echo "No changes"
+          git commit -m "Daily wallpaper update" || echo "No changes"
           git push origin main
 
           echo "✅ 推送完成！"
